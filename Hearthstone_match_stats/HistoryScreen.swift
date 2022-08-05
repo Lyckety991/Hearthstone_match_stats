@@ -28,6 +28,10 @@ struct HistoryScreen: View {
                         HStack {
                         Text(task.title ?? "N/A")
                             .font(.headline)
+                        Spacer()
+                        Text(task.date?.formatted() ?? "")
+                                .font(.subheadline)
+                               
                         }
                         HStack {
                             Text(ClassManager.yourClasses[Int(task.myClass)])
@@ -40,6 +44,8 @@ struct HistoryScreen: View {
                             Text("Result:")
                                 .padding(.trailing, 5)
                             Text(matchResult[Int(task.result)])
+                            
+                            
                         }
                           
                     }

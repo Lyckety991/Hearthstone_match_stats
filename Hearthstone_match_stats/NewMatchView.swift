@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct NewMatchView: View {
+    
+    
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var viewContext
     
-    @State private var date = Date()
+    
+    @State private var date = Date.now.formatted()
     @State private var matchTitle: String
     @State private var resultGame: Int
     @State private var yourClass: Int
@@ -24,6 +27,7 @@ struct NewMatchView: View {
         self._yourClass = State(initialValue: Int(task?.myClass ?? 0))
         self._opponentClass = State(initialValue: Int(task?.enemyClass ?? 0))
         self._resultGame = State(initialValue: Int(task?.result ?? 0))
+        self._date = State(initialValue: task?.date?.formatted() ?? "")
         
         
     }
@@ -104,11 +108,7 @@ struct NewMatchView: View {
 
             }
            
-            
-       
         }
-       
-        
        
     }
     
@@ -116,11 +116,12 @@ struct NewMatchView: View {
     func createNewMatch() {
         
         let newMatch = Match(context: viewContext)
+        newMatch.date = Date()
         newMatch.id = UUID()
         newMatch.title = matchTitle
         newMatch.myClass = Int16(yourClass)
         newMatch.enemyClass = Int16(opponentClass)
-        newMatch.date = Date()
+        
         newMatch.result = Int16(resultGame)
         
         try? viewContext.save()

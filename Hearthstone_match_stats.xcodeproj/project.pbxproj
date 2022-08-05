@@ -15,6 +15,7 @@
 		63508CCE288C3A6400D6D92A /* HistoryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63508CCD288C3A6400D6D92A /* HistoryScreen.swift */; };
 		63508CD1288C3EFE00D6D92A /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63508CCF288C3EFE00D6D92A /* CoreData.xcdatamodeld */; };
 		63508CD3288C421D00D6D92A /* MatchDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63508CD2288C421D00D6D92A /* MatchDataManager.swift */; };
+		639C7D4628995DA300265150 /* EditProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C7D4528995DA300265150 /* EditProfileScreen.swift */; };
 		63A208C028932B2C004E146C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A208BF28932B2C004E146C /* ProfileView.swift */; };
 		63A208C22893381C004E146C /* ClassManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A208C12893381C004E146C /* ClassManager.swift */; };
 /* End PBXBuildFile section */
@@ -29,6 +30,7 @@
 		63508CCD288C3A6400D6D92A /* HistoryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryScreen.swift; sourceTree = "<group>"; };
 		63508CD0288C3EFE00D6D92A /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		63508CD2288C421D00D6D92A /* MatchDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDataManager.swift; sourceTree = "<group>"; };
+		639C7D4528995DA300265150 /* EditProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileScreen.swift; sourceTree = "<group>"; };
 		63A208BF28932B2C004E146C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		63A208C12893381C004E146C /* ClassManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +90,7 @@
 				633903FD2889A38E00031E8B /* NewMatchView.swift */,
 				633903F128899C8700031E8B /* ContentView.swift */,
 				63A208BF28932B2C004E146C /* ProfileView.swift */,
+				639C7D4528995DA300265150 /* EditProfileScreen.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				63508CD1288C3EFE00D6D92A /* CoreData.xcdatamodeld in Sources */,
 				63508CD3288C421D00D6D92A /* MatchDataManager.swift in Sources */,
 				633903FE2889A38E00031E8B /* NewMatchView.swift in Sources */,
+				639C7D4628995DA300265150 /* EditProfileScreen.swift in Sources */,
 				63A208C028932B2C004E146C /* ProfileView.swift in Sources */,
 				63A208C22893381C004E146C /* ClassManager.swift in Sources */,
 				633903F028899C8700031E8B /* Hearthstone_match_statsApp.swift in Sources */,

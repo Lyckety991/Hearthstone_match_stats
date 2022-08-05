@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
+    
     @ObservedObject var classManager = ClassManager()
     @State private var userName = "xNameless#779"
     
@@ -16,7 +17,7 @@ struct ProfileView: View {
     @State private var desc = "whdjjdjhwggwrwevfhwhjfghjwgegwerbwenmbrjwegrjgwerwebrbwerbjhwrhjwevhwvehrvhjwvrjhvwrvjwhrvjhwevrrvwerhjwevrjhwevrhvwehrvjwvrwervjwrvjwr"
     
     var body: some View {
-        NavigationView {
+        
         VStack {
             List {
                 Section("Battle.net ID") {
@@ -24,12 +25,11 @@ struct ProfileView: View {
                 }
                 Section("Favorite Class") {
                     Picker("grgerg", selection: $classManager.yourClassesIndex) {
-                        ForEach(0..<ClassManager.yourClasses.count, id: \.self)  { index in
-                            Text(ClassManager.yourClasses[index]).tag(index)
+                        
                             
                         }
                     }
-                }
+                
                 
                 Section("Most hated class") {
                     Text(hateClass)
@@ -46,8 +46,24 @@ struct ProfileView: View {
             }
             .listStyle(.insetGrouped)
             .navigationTitle("Your Profile")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                      
+                       
+                        
+                    } label: {
+                        Text("Edit")
+                    }
+                    
+
+                }
+               
+                
+           
+            }
         }
-        }
+        
         
     }
 }
