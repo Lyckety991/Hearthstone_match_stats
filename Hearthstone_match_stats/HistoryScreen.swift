@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct HistoryScreen: View {
-    @State private var searchText = ""
+    
     
     @ObservedObject var classMN = ClassManager()
      
@@ -17,7 +17,7 @@ struct HistoryScreen: View {
     @FetchRequest(entity: Match.entity(), sortDescriptors: []) var tasks: FetchedResults<Match>
     
     var matchResult = ["Win", "Loss"]
-    var matchTime = DateComponents()
+    
     
     
     var body: some View {
@@ -26,7 +26,7 @@ struct HistoryScreen: View {
                 ForEach(tasks) { task in
                     VStack(alignment: .leading) {
                         HStack {
-                        Text(task.title ?? "N/A")
+                        Text(task.title ?? "No Title")
                             .font(.headline)
                         Spacer()
                         Text(task.date?.formatted() ?? "")
@@ -55,15 +55,12 @@ struct HistoryScreen: View {
                 
                 
             }
-            .searchable(text: $searchText) {
-                ForEach(ClassManager.enemyClasses, id: \.self) { result in
-                    Text("\(result)")
-                }
-            }
-            .foregroundColor(.secondary)
-            .navigationTitle("Match history")
-            .listStyle(.insetGrouped)
+            .navigationTitle("Match History")
             
+          
+            
+            
+        
     }
     
     func deleteMatch(offsets: IndexSet) {

@@ -36,7 +36,7 @@ struct NewMatchView: View {
         VStack {
             Form {
                 
-                Section(header: Text("Match title")) {
+                Section(header: Text("Match title (not required)")) {
                     TextField("Match descriptin...", text: $matchTitle)
                     
                 }
@@ -80,6 +80,8 @@ struct NewMatchView: View {
                         Text("Priest").tag(5)
                         Text("Demon Hunter").tag(6)
                         Text("Shaman").tag(7)
+                        Text("Hunter").tag(8)
+                        Text("Druide").tag(9)
                         
                     }
                 } header: {
@@ -87,10 +89,8 @@ struct NewMatchView: View {
                 }
                 .pickerStyle(.wheel)
                 
-                
-                
             }
-            .listStyle(.insetGrouped)
+            
             
         
         }
@@ -100,6 +100,7 @@ struct NewMatchView: View {
                 Button {
                    createNewMatch()
                     presentationMode.wrappedValue.dismiss()
+                    
                     
                 } label: {
                     Text("Save")
