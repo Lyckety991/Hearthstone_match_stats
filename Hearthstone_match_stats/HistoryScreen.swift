@@ -18,50 +18,72 @@ struct HistoryScreen: View {
     
     var matchResult = ["Win", "Loss"]
     
+    var color: ColorCheck
+    
+    var red = Color.red
+    var green = Color.green
     
     
     var body: some View {
         
+        VStack(spacing: 20) {
+            
+            
             List {
-                ForEach(tasks) { task in
-                    VStack(alignment: .leading) {
-                        HStack {
-                        Text(task.title ?? "No Title")
-                            .font(.headline)
-                        Spacer()
-                        Text(task.date?.formatted() ?? "")
-                                .font(.subheadline)
-                               
+                
+                    ForEach(tasks) { task in
+                        VStack(alignment: .leading) {
+                            HStack {
+                            Text(task.title ?? "No Title")
+                                .font(.headline)
+                            Spacer()
+                            Text(task.date?.formatted() ?? "")
+                                    .font(.subheadline)
+                                   
+                            }
+                            HStack {
+                                Text(ClassManager.yourClasses[Int(task.myClass)])
+                                Text("vs")
+                                    .underline()
+                                Text(ClassManager.enemyClasses[Int(task.enemyClass)])
+                                Spacer()
+                                Image(systemName: "circle.fill")
+                                    .resizable()
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(color.checkColor ? green : red)
+                                   
+                            }
+                            HStack {
+                                Text("Result:")
+                                    .padding(.trailing, 5)
+                                Text(matchResult[Int(task.result)])
+                                
+                                
+                            }
+                              
                         }
-                        HStack {
-                            Text(ClassManager.yourClasses[Int(task.myClass)])
-                            Text("vs")
-                                .underline()
-                            Text(ClassManager.enemyClasses[Int(task.enemyClass)])
-                               
-                        }
-                        HStack {
-                            Text("Result:")
-                                .padding(.trailing, 5)
-                            Text(matchResult[Int(task.result)])
-                            
-                            
-                        }
-                          
+                      
+                        
                     }
+                    .onDelete(perform: deleteMatch)
                     
-                }
-                .onDelete(perform: deleteMatch)
-                
-                
+                    
             }
-            .navigationTitle("Match History")
+           
+          
+                
+           
+        }
+        .navigationTitle("Match History")
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.mint)
             
           
             
             
         
     }
+    
     
     func deleteMatch(offsets: IndexSet) {
       offsets.map { tasks [$0]
@@ -73,7 +95,7 @@ struct HistoryScreen: View {
 
 struct HistoryScreen_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryScreen()
+        HistoryScreen(color: ColorCheck(checkColor: true))
         
             
     }

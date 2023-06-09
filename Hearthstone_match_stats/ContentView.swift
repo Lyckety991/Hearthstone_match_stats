@@ -14,48 +14,30 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
         
-        VStack {
+            VStack(spacing: 10) {
             
             Spacer()
-            Text("Hearthstone Matchtracker App")
-                .foregroundColor(.black)
-                .font(.title2)
+            Text("Matchtracker App")
+                .foregroundColor(.white)
+                .font(.title)
                 .bold()
                 
-            Text("A simple way to track your matches easy")
+            Text("A simple way to track your Hearthstone matches easy")
+                    .multilineTextAlignment(.center)
                 .padding(.bottom, 120)
-           
+                .font(.system(size: 18))
+                .foregroundColor(.white)
             NavigationLink {
-                NewMatchView()
+                newMatchScreen()
             } label: {
-                RoundedRectangle(cornerRadius: 10)
-                    .foregroundColor(.cyan)
-                    .frame(height: 100)
-                    .padding(.horizontal, 60)
-                    .overlay(
-                            Text("New match")
-                                .font(.system(size: 20))
-                                .foregroundColor(.white)
-                                .bold()
-                                .font(.callout)
-                        )
+               CustomButton(text: "New Match")
                     
             }
 
             NavigationLink {
-                HistoryScreen()
+                HistoryScreen(color: ColorCheck(checkColor: false))
             } label: {
-                RoundedRectangle(cornerRadius: 10)
-                    .foregroundColor(.cyan)
-                    .frame(height: 100)
-                    .padding(.horizontal, 60)
-                    .overlay(
-                            Text("Match history")
-                                .font(.system(size: 20))
-                                .foregroundColor(.white)
-                                .bold()
-                                .font(.callout)
-                        )
+               CustomButton(text: "Match History")
                     
             }
             
@@ -66,7 +48,7 @@ struct ContentView: View {
                     showAsSheet.toggle()
                 } label: {
                     Text("About")
-                        .foregroundColor(.mint)
+                        .foregroundColor(.white)
                         .underline()
                 }
                 .sheet(isPresented: $showAsSheet) {
@@ -77,7 +59,7 @@ struct ContentView: View {
                     showCopyright.toggle()
                 } label: {
                     Text("Copyright")
-                        .foregroundColor(.mint)
+                        .foregroundColor(.white)
                         .underline()
                 }
                 .sheet(isPresented: $showCopyright) {
@@ -88,6 +70,8 @@ struct ContentView: View {
             }
                 
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.cyan)
        
        
         

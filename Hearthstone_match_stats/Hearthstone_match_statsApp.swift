@@ -12,8 +12,12 @@ struct Hearthstone_match_statsApp: App {
     let manager = MatchDataManager.shared
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, manager.persistantContainer.viewContext)
+            NavigationView {
+                ContentView()
+            }
+            .environment(\.managedObjectContext, manager.persistantContainer.viewContext)
+           
+                
         }
     }
 }

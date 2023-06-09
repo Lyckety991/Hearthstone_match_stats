@@ -9,6 +9,8 @@ import SwiftUI
 
 struct NewMatchView: View {
     
+    @ObservedObject var classManager = ClassManager()
+    
     
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var viewContext
@@ -20,6 +22,7 @@ struct NewMatchView: View {
     @State private var yourClass: Int
     @State private var opponentClass: Int
     private var task: Match?
+    
     
     init(task: Match? = nil) {
         self.task = task
@@ -49,29 +52,10 @@ struct NewMatchView: View {
                 .pickerStyle(.segmented)
                 
                 Section {
-                   
-                        Picker("",selection: $yourClass) {
-                            Text("Mage").tag(0)
-                            Text("Warlock").tag(1)
-                            Text("Paladin").tag(2)
-                            Text("Warrior").tag(3)
-                            Text("Rouge").tag(4)
-                            Text("Priest").tag(5)
-                            Text("Demon Hunter").tag(6)
-                            Text("Shaman").tag(7)
-                            Text("Hunter").tag(8)
-                            Text("Druide").tag(9)
-                            
-                        }
                     
-                } header: {
-                    Text("Your Class")
-                }
-                .pickerStyle(.wheel)
+                    Picker("Select your class",selection: $yourClass) {
                         
-                  
-                Section {
-                    Picker("",selection: $opponentClass) {
+                        
                         Text("Mage").tag(0)
                         Text("Warlock").tag(1)
                         Text("Paladin").tag(2)
@@ -84,21 +68,42 @@ struct NewMatchView: View {
                         Text("Druide").tag(9)
                         
                     }
+                    
+                } header: {
+                    Text("Your Class")
+                }.pickerStyle(.wheel)
+               
+                
+                
+                
+                Section {
+                    Picker("Select enemy class",selection: $opponentClass) {
+                        Text("Mage").tag(0)
+                        Text("Warlock").tag(1)
+                        Text("Paladin").tag(2)
+                        Text("Warrior").tag(3)
+                        Text("Rouge").tag(4)
+                        Text("Priest").tag(5)
+                        Text("Demon Hunter").tag(6)
+                        Text("Shaman").tag(7)
+                        Text("Hunter").tag(8)
+                        Text("Druide").tag(9)
+                        
+                        
+                    }
                 } header: {
                     Text("Enemy class")
-                }
-                .pickerStyle(.wheel)
+                }.pickerStyle(.wheel)
+                
                 
             }
             
-            
-        
         }
         .navigationTitle("New match")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                   createNewMatch()
+                    createNewMatch()
                     presentationMode.wrappedValue.dismiss()
                     
                     
@@ -106,11 +111,11 @@ struct NewMatchView: View {
                     Text("Save")
                 }
                 
-
+                
             }
-           
+            
         }
-       
+        
     }
     
     
@@ -122,7 +127,6 @@ struct NewMatchView: View {
         newMatch.title = matchTitle
         newMatch.myClass = Int16(yourClass)
         newMatch.enemyClass = Int16(opponentClass)
-        
         newMatch.result = Int16(resultGame)
         
         try? viewContext.save()
@@ -130,7 +134,7 @@ struct NewMatchView: View {
     }
     
     
-  
+    
 }
 
 struct NewMatchView_Previews: PreviewProvider {
@@ -138,3 +142,5 @@ struct NewMatchView_Previews: PreviewProvider {
         NewMatchView()
     }
 }
+
+

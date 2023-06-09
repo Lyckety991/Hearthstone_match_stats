@@ -11,13 +11,13 @@ import Foundation
 class ClassManager: ObservableObject {
     
     static let yourClasses = [
-        "Mage","Warlock","Paladin","Warrior","Rouge","Priest","Demon Hunter","Shaman","Hunter","Druide"
+        "Mage","Warlock","Paladin","Warrior","Rouge","Priest","Demon Hunter","Shaman","Hunter","Druide","Death Knight",
     ]
     
     
     static let enemyClasses = [
     
-        "Mage","Warlock","Paladin","Warrior","Rouge","Priest","Demon Hunter","Shaman","Hunter","Druide"
+        "Mage","Warlock","Paladin","Warrior","Rouge","Priest","Demon Hunter","Shaman","Hunter","Druide","Death Knight",
     ]
     
     @Published var yourClassesIndex = 0
