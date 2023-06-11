@@ -9,19 +9,17 @@ import SwiftUI
 
 struct ClassCircle: View {
     
-    @State var classText: String = "Warrior"
+   
     @State var numberTag: Int = 1
+    @State var image: String
     
     var body: some View {
         VStack {
-            Circle()
-                .strokeBorder(.black, lineWidth: 2)
-                .background(Circle().fill(.blue))
-                .frame(maxWidth: 70,maxHeight: 80)
-                .shadow(radius: 1)
-            .tag(numberTag)
-            Text(classText)
-                .bold().font(.system(size: 20))
+            Image(image)
+                .resizable()
+                .frame(maxWidth: 100, maxHeight: 100)
+                .shadow(radius: 6)
+            
         }
             
             
@@ -30,6 +28,6 @@ struct ClassCircle: View {
 
 struct ClassCircle_Previews: PreviewProvider {
     static var previews: some View {
-        ClassCircle()
+        ClassCircle(image: "warrior")
     }
 }

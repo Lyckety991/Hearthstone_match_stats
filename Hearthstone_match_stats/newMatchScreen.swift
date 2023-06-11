@@ -8,8 +8,35 @@
 import SwiftUI
 
 struct newMatchScreen: View {
+    
+    
+    // Own class
+    @State var classArray1 = [
+    
+       "warrior", "mage", "warlock", "paladin", "death-knight", "hunter", "shaman", "rogue", "druid", "demonhunter"
+    
+    ]
+    
+    
+    // Enemy class
+    @State var classArray2 = [
+    
+        "warrior", "mage", "warlock", "paladin", "death-knight", "hunter", "shaman", "rogue", "druid", "demonhunter"
+    
+    ]
+    
+    // Varibles
     @State var matchTitle: String = ""
+    @State private var isSelected = false
+    @State private var isSelected2 = false
+    @State private var numberTag = 0
+    
+    
+    
     var body: some View {
+        
+        
+        // MARK: - Top Section ----> TextField
         
         ScrollView {
             
@@ -29,18 +56,23 @@ struct newMatchScreen: View {
                
             }
             .padding()
+            
+            
+            // MARK: - Middle Section ----> Class selection
+            
             ScrollView(.horizontal) {
                 HStack {
-                    ClassRectangle()
-                    ClassRectangle()
-                    ClassRectangle()
-                    ClassRectangle()
-                    ClassRectangle()
-                    ClassRectangle()
-                    ClassRectangle()
-                    ClassRectangle()
+                    ForEach(classArray1, id: \.self) { classItem in
+                        
+                        Button {
+                            print(numberTag)
+                        } label: {
+                            ClassCircle(image: classItem)
+                        }
+                        
+                    }
                 }
-                .padding()
+                
                 
             }
             .padding(.horizontal,10)
@@ -49,7 +81,7 @@ struct newMatchScreen: View {
                 .padding()
             
             HStack {
-                Text("Choose enemys class")
+                Text("Choose enemy class")
                     .font(.title2)
                 
                 Spacer()
@@ -58,16 +90,20 @@ struct newMatchScreen: View {
             
             ScrollView(.horizontal) {
                 HStack {
-                    ClassRectangle()
-                    ClassRectangle()
-                    ClassRectangle()
-                    ClassRectangle()
-                    ClassRectangle()
-                    ClassRectangle()
-                    ClassRectangle()
-                    ClassRectangle()
+                    
+                    ForEach(classArray2, id: \.self) { classItem in
+                        
+                        Button {
+                            
+                        } label: {
+                            ClassCircle(image: classItem)
+                        }
+                        .tag(numberTag)
+                        
+                    }
+                    
                 }
-                .padding()
+              
                
             }
             .padding(.horizontal,10)
@@ -84,32 +120,38 @@ struct newMatchScreen: View {
             }
             .padding()
             
+            //MARK: - Bottom Section ----> SelectButton / Savebutton
+            
             HStack {
                 
+                    SelectButton(isSelected: $isSelected, color: .green, text: "Win")
                 
-                Button {
-                    
-                    
-                    
-                } label: {
-                    CustomButton(text: "Win")
-                }
+                    .onTapGesture {
+                        isSelected.toggle()
+                        
+                        if isSelected {
+                            isSelected2 = false
+                            
+                        }
+                    }
                 
                 
-                Button {
-                    
-                    
-                    
-                } label: {
-                    CustomButton(text: "Loss")
-                }
-                
+                     SelectButton(isSelected: $isSelected2, color: .red, text: "Loss")
+                 
+                     .onTapGesture {
+                         isSelected2.toggle()
+                         
+                         if isSelected2 {
+                             isSelected = false
+                             
+                         }
+                     }
                 
             }
             .padding(.horizontal, 20)
             
          
-            
+            // Save Button
             Button {
                
             } label: {
@@ -125,9 +167,6 @@ struct newMatchScreen: View {
                     
             }
             .padding()
-            
-         
-           
             
         }
         .navigationTitle("New Match")

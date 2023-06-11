@@ -10,12 +10,12 @@ import Foundation
 
 class ClassManager: ObservableObject {
     
-    static let yourClasses = [
+    static var yourClasses = [
         "Mage","Warlock","Paladin","Warrior","Rouge","Priest","Demon Hunter","Shaman","Hunter","Druide","Death Knight",
     ]
     
     
-    static let enemyClasses = [
+    static var enemyClasses = [
     
         "Mage","Warlock","Paladin","Warrior","Rouge","Priest","Demon Hunter","Shaman","Hunter","Druide","Death Knight",
     ]
